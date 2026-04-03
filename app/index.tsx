@@ -8,7 +8,7 @@ export default function App() {
       <Text className="text-xl font-bold text-success">
         Welcome to Nativewind!
       </Text>
-      <Link href="/onboarding" className="mt-4 rounded bg-primary text-white p-4">Go To Onboarding</Link>
+      <Link href="/onboarding" className="mt-4 rounded bg-primary text-white p-4">Go To Onboarding Screen</Link>
     </View>
   );
 }
