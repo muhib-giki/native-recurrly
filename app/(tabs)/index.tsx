@@ -1,18 +1,52 @@
+import { HOME_BALANCE, HOME_USER, UPCOMING_SUBSCRIPTIONS } from "@/constants/data";
+import { icons } from "@/constants/icons";
+import images from "@/constants/images";
 import "@/global.css";
-import { Link } from "expo-router";
-import { Text } from "react-native";
+import dayjs from "dayjs";
 
+import ListHeading from "@/components/ListHeading";
+import UpcomingSubscriptionCard from "@/components/UpcomingSubscriptionCard";
+import { formatCurrency } from "@/lib/utils";
 import { styled } from 'nativewind';
+import { FlatList, Image, Text, View } from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 const SafeAreaView = styled(RNSafeAreaView);
 
 export default function App() {
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
-      <Text className="text-7xl font-bold text-success">
-        Home
-      </Text>
-      <Link href="/onboarding" className="mt-4 rounded bg-primary text-white p-4">Go To Onboarding Screen</Link>
-    </SafeAreaView> 
+      <View className="home-header">
+        <View className="home-user">
+          <Image source={images.avatar} className="home-avatar" />
+          <Text className="home-user-name">{HOME_USER.name}</Text>
+        </View>
+        <Image source={icons.add} className="home-add-icon" />
+      </View>
+
+      <View className="home-balance-card">
+        <Text className="home-balance-label">Balance</Text>
+        <View className="home-balance-row">
+          <Text className="home-balance-amount">{formatCurrency(HOME_BALANCE.amount)}</Text>
+          <Text className="home-balance-date">{dayjs(HOME_BALANCE.nextRenewalDate).format('MM/DD')}</Text>
+        </View>
+      </View>
+
+      <View>
+        <ListHeading title="Upcoming" buttonText="View all" />
+
+        <FlatList 
+          data={UPCOMING_SUBSCRIPTIONS}
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          ListEmptyComponent={<Text className="home-empty-state">No upcoming renewals yet.</Text>}
+          renderItem={({item}) => (
+            <UpcomingSubscriptionCard {...item} />
+          )}
+        />
+      </View>
+
+
+    </SafeAreaView>
   );
 }
