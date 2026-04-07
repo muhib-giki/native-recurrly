@@ -198,7 +198,7 @@
     }
 
     .sub-details {
-        @apply gap-6;
+        @apply gap-4;
     }
 
     .sub-row {
