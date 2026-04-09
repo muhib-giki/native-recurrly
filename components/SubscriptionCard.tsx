@@ -4,10 +4,10 @@ import { Image, Pressable, Text, View } from "react-native";
 
 const SubscriptionCard = ({ name, price, currency, icon, billing, color, category, plan, renewalDate, expanded, onPress, paymentMethod, startDate, status }: SubscriptionCardProps) => {
     return (
-        <Pressable  
+        <Pressable
             onPress={onPress}
-            className={clsx('sub-card', expanded ? 'sub-card-expanded' : 'bg-card')} 
-            style={!expanded && color ? {backgroundColor: color} : undefined}
+            className={clsx('sub-card', expanded ? 'sub-card-expanded' : 'bg-card')}
+            style={!expanded && color ? { backgroundColor: color } : undefined}
         >
             <View className="sub-head">
                 <View className="sub-main">
@@ -15,8 +15,8 @@ const SubscriptionCard = ({ name, price, currency, icon, billing, color, categor
                     <View className="sub-copy">
                         <Text className="sub-title" numberOfLines={1}>{name}</Text>
                         <Text className="sub-meta" numberOfLines={1} ellipsizeMode="tail">
-                            {category?.trim() || plan?.trim() || (renewalDate)? formatSubscriptionDateTime(renewalDate) : "" }
-                            </Text>
+                            {category?.trim() || plan?.trim() || (renewalDate) ? formatSubscriptionDateTime(renewalDate) : ""}
+                        </Text>
                     </View>
                 </View>
                 <View className="sub-price-box">
@@ -25,7 +25,7 @@ const SubscriptionCard = ({ name, price, currency, icon, billing, color, categor
                 </View>
             </View>
             {expanded && (
-                <View className="sub-bdy">
+                <View className="sub-body">
                     <View className="sub-details">
                         <View className="sub-row">
                             <View className="sub-row-copy">
