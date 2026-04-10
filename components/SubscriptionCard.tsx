@@ -15,7 +15,7 @@ const SubscriptionCard = ({ name, price, currency, icon, billing, color, categor
                     <View className="sub-copy">
                         <Text className="sub-title" numberOfLines={1}>{name}</Text>
                         <Text className="sub-meta" numberOfLines={1} ellipsizeMode="tail">
-                            {category?.trim() || plan?.trim() || (renewalDate) ? formatSubscriptionDateTime(renewalDate) : ""}
+                            {category?.trim() || plan?.trim() || (renewalDate ? formatSubscriptionDateTime(renewalDate) : '')}
                         </Text>
                     </View>
                 </View>

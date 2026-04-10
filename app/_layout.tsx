@@ -25,7 +25,7 @@ function RootLayoutContent() {
   })
 
   useEffect(() => {
-    if (fontsLoaded) {
+    if (fontsLoaded && authLoaded) {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded, authLoaded]);
